@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>현재 날짜 확인</h1>
+    <p id="curDate">2024 7월 17일</p>
+    <h1>현재 시간 확인</h1>
+    <p id="curTime">14시 48분 49초</p>
+    <button id="updateBtn">시간업데이트</button>
+    <script>
+      // 현재 날짜를 보여줄 p태그
+      let curDateElement = document.getElementById("curDate");
+      // 현재 시간을 보여줄 p태그
+      let curTimeElement = document.getElementById("curTime");
+      // 이벤트를 발생시킬 버튼
+      let updateBtn = document.getElementById("updateBtn");
+
+      // 버튼 이벤트
+      updateBtn.addEventListener("click", () => {
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+        let hour = today.getHours();
+        let minute = today.getMinutes();
+        let second = today.getSeconds();
+        let curDateString = `${year}년 ${month}월 ${day}일`;
+        let curTimeString = `${hour}시 ${minute}분 ${second}초`;
+
+        curDateElement.innerHTML = curDateString;
+        curTimeElement.innerHTML = curTimeString;
+      });
+    </script>
+  </body>
+</html>

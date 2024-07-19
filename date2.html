@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #93e49e;
+        width: 960px;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+      }
+      #eventbtn {
+        background: rgb(86, 86, 199);
+        color: white;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>디데이 계산기</h1>
+    <label for="date">날짜</label>
+    <input type="date" name="" id="date" />
+
+    <p id="today1"></p>
+    <button id="eventbtn">계산하기</button>
+    <h2 id="dday">D-DAY 계산</h2>
+    <script>
+      let today = new Date();
+      let year = today.getFullYear();
+      let month = today.getMonth() + 1;
+      let day = today.getDate();
+      let dayday = today.getDay();
+
+      let dd = "";
+      if (dayday === 0) {
+        dd = "일요일";
+      } else if (dayday === 1) {
+        dd = "월요일";
+      } else if (dayday === 2) {
+        dd = "화요일";
+      } else if (dayday === 3) {
+        dd = "수요일";
+      } else if (dayday === 4) {
+        dd = "목요일";
+      } else if (dayday === 5) {
+        dd = "금요일";
+      } else {
+        dd = "토요일";
+      }
+
+      today1.innerHTML = `${year}년 ${month}월 ${day}일 ${dd}`;
+
+      // input태그 가져오기
+      let inputDate = document.getElementById("date");
+      // // button태그 가져오기
+      // let btn = document.getElementById("btn");
+      // // 클릭이벤트 발생
+      // btn.addEventListener("click", () => {
+      //   // 날짜 데이터 가져오기
+      //   let selectedDate = inputDate.value;
+      //   // 날짜 타입확인
+      //   // console.log(selectedDate, typeof selectedDate);
+      // });
+
+      let eventbtn = document.getElementById("eventbtn");
+      eventbtn.addEventListener("click", () => {
+        let selectedDate = inputDate.value;
+        let afterDate = new Date(selectedDate);
+
+        let diff = afterDate - today;
+        let remainDay = diff / (1000 * 60 * 60 * 24);
+
+        let remainDay1 = Math.ceil(remainDay);
+        dday.innerHTML = `D-day까지 ${remainDay1}일 남았습니다`;
+      });
+    </script>
+  </body>
+</html>
+<!-- console.log(selectedDate, typeof selectedDate);
+console.log(afterDate, typeof afterDate); -->

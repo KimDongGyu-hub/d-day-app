@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>현재 날짜 확인</li>
+      <p id="list1"></p>
+      <li>현재 시간 확인</li>
+      <p id="list2"></p>
+    </ul>
+
+    <button id="btn">시간 업데이트</button>
+    <script>
+      let btnevent = document.getElementById("btn");
+      btnevent.onclick = function () {
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+        let hour = today.getHours();
+        let minute = today.getMinutes();
+        let second = today.getSeconds();
+
+        list1.innerHTML = `${year}년 ${month}월 ${day}일`;
+        list2.innerHTML = `${hour}시 ${minute}분 ${second}초`;
+      };
+    </script>
+  </body>
+</html>
